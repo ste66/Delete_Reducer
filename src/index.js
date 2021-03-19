@@ -1,17 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+import App from './components2/App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import * as serviceWorker from './serviceWorker';
+
+// =============================================================
+
+// ! RULE 2: WRAP YOUR ENTIRE APP WITH PROVIDER
+
+// ? 1st Way: You can do it inside the App.js in the return part
+// ? 2nd Way : You can do it inside the index.js 
+
+
+import {UserProvider} from "./components2/context"
+
+// If you are not exporting your component as a "defualt", we need to use {} to import it in other files!
+
+
+// =============================================================
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  <UserProvider>
+
+        <App />
+
+   </UserProvider> 
+
+
+
+
+, document.getElementById('root'));
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
